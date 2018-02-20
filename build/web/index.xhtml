@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:layout>
+            <p:layoutUnit header="THE BEST" position="north" size="90" resizable="true" collapsible="true" gutter="0">
+
+            </p:layoutUnit>
+            <p:layoutUnit position="west" collapsible="true" gutter="0">
+                west
+            </p:layoutUnit>
+            <p:layoutUnit position="east" collapsible="true" gutter="0">
+                east
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" collapsible="true" gutter="0">
+                
+                <h:form>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="username" for="username"></h:outputLabel>
+                        <p:inputText value="#{primeBean.username}" id="username" title="User name 8 chareters"></p:inputText>
+                        <p:tooltip for="username" showEffect="fade" hideEffect="fade" ></p:tooltip>
+
+                        <h:outputLabel value="password" for="password"></h:outputLabel>
+                        <p:password value="#{primeBean.password}" feedback="true"></p:password>
+                        <h:panelGroup></h:panelGroup>
+                        <h:panelGroup></h:panelGroup>
+
+                        <p:commandButton icon="ui-icon-disk" value="Login"/>
+                    </h:panelGrid>
+                </h:form>
+
+    
+                
+            </p:layoutUnit>
+            <p:layoutUnit position="south" collapsible="true" gutter="0">
+                <p> HELLU</p>
+            </p:layoutUnit>
+            
+            </p:layout>
+    </h:body>
+</html>
+
