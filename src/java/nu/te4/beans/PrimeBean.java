@@ -6,10 +6,16 @@
 package nu.te4.beans;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedProperty;
 import javax.inject.Named;
+import javax.json.JsonArray;
 /**
  *
  * @author Jacob
@@ -34,6 +40,25 @@ public class PrimeBean implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+      
+    private JsonArray users;
+         
+    @ManagedProperty("nu.te4.beans.UsersBean")
+    private UsersBean usersBean;
+     
+    @PostConstruct
+    public void init() {
+        try {
+            users = usersBean.getUsers();
+        } catch (Exception e) {
+            System.out.println("Error : " + e);
+        }
+    }
+ 
+    public JsonArray getCars() {
+        return users;
+    }
+ 
  
    
 }
