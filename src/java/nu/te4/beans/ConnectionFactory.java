@@ -22,7 +22,7 @@ public class ConnectionFactory {
         String usernameU = "jacob_te4";
         String passwordU = "jacob_te4";
         Class.forName("com.mysql.jdbc.Driver");
-        return DriverManager.getConnection(urlHost  , usernameU, passwordU);
+        return DriverManager.getConnection(url  , username, password);
         
     }
 }
