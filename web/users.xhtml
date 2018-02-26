@@ -14,8 +14,11 @@ and open the template in the editor.
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <div>TODO write content</div>
 
+        <h:form>
+            <h:outputLabel value=" Admin #{loginBean.userName}"></h:outputLabel> 
+            <p:commandButton value=" Logout " action="#{loginBean.logout()}"></p:commandButton>
+        </h:form>
         <h:form> 
             <p:dataScroller value="#{primeBean.users}" var="users" chunkSize="10" mode="inline" scrollHeight="500">
                 <f:facet name="header">

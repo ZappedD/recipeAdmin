@@ -19,13 +19,13 @@
                         <h:panelGroup></h:panelGroup>
                         <h:panelGroup></h:panelGroup>
 
-                        <p:commandButton icon="ui-icon-disk" value="Login"/>
+                        <p:commandButton action="#{loginBean.login()}" icon="ui-icon-disk" value="Login"/>
                     </h:panelGrid>
+                    
+                    <h:outputText value="#{loginBean.result}"
                 </h:form>
                 
-            <p:layoutUnit position="south" collapsible="true" gutter="0">
-                <p> HELLU</p>
-            </p:layoutUnit>
+        
             
             </p:layout>
     </h:body>

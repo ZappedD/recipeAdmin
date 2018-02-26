@@ -5,6 +5,7 @@
  */
 package nu.te4.beans;
 
+import nu.te4.resources.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-package nu.te4.beans;
+package nu.te4.resources;
 
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
