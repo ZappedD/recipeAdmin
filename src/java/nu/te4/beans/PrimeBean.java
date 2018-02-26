@@ -24,7 +24,8 @@ import javax.json.JsonArray;
 @SessionScoped
 public class PrimeBean implements Serializable {
     private String username,password;
-
+    private JsonArray users;
+    
     public String getUsername() {
         return username;
     }
@@ -41,7 +42,6 @@ public class PrimeBean implements Serializable {
         this.password = password;
     }
       
-    private JsonArray users;
          
     @ManagedProperty("nu.te4.beans.UsersBean")
     private UsersBean usersBean;
