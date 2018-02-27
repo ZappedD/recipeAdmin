@@ -29,16 +29,16 @@ public class LoginFilter {
          HttpServletResponse resp = (HttpServletResponse) response;
          HttpSession sess = reqt.getSession(false);
          
-         String reqURI = reqt.getSessionURI()
+         String reqURI = reqt.getRequestURI();
          
-        // For the first application request there is no loginBean in the session so user needs to log in
-        // For other requests loginBean is present but we need to check if user has logged in successfully
-        if (loginBean == null || !loginBean.isLoggedIn()) {
-            String contextPath = ((HttpServletRequest)request).getContextPath();
-            ((HttpServletResponse)response).sendRedirect(contextPath + "/login.xhtml");
+        if (reqURI.indexOf("/index.xhtml") >=0
+                || (sess != null && sess.getAttribute("user") != null)
+                || reqURI.indexOf("/public/") >= 0
+                || reqURI.contains("javax.faces.resource") ) {
+              chain.doFilter(request, response);
+        } else {
+            resp.sendRedirect(reqt.getContextPath() + "/faces/index.xhtml");
         }
-         
-        chain.doFilter(request, response);
              
     }
     

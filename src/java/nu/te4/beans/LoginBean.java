@@ -6,10 +6,13 @@
 package nu.te4.beans;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import nu.te4.resources.SessionUtils;
+import nu.te4.resources.User;
 import nu.te4.resources.UserRights;
 
 /**
@@ -20,14 +23,15 @@ import nu.te4.resources.UserRights;
 @SessionScoped
 public class LoginBean implements Serializable {
     
-    private String userName, password, result;
+    private String username, password, result;
+    private List<User> users;
     
     public String login() {
         boolean valid = false;
-        valid = UserRights.checkCredentials(userName, password);
+        valid = UserRights.checkCredentials(username, password);
         if (valid) {
             HttpSession session = SessionUtils.getSession();
-            session.setAttribute("user", userName);
+            session.setAttribute("user", username);
             result = "admin";
         } else {
             result = "Wrong username or password tyr again ";
@@ -36,14 +40,16 @@ public class LoginBean implements Serializable {
         return result;
     }
     
-    public void logout() {
+    public String logout() {
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
-        //rederect 
+        //redierect 
+        String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+        return viewId + "?faces-redirect=true";
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
@@ -54,8 +60,8 @@ public class LoginBean implements Serializable {
         return result;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -65,7 +71,5 @@ public class LoginBean implements Serializable {
     public void setResult(String result) {
         this.result = result;
     }
-    
-    
-    
+  
 }

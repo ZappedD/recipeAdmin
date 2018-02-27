@@ -15,14 +15,12 @@ and open the template in the editor.
     </h:head>
     <h:body>
 
-        <h:form>
-            <h:outputLabel value=" Admin #{loginBean.userName}"></h:outputLabel> 
-            <p:commandButton value=" Logout " action="#{loginBean.logout()}"></p:commandButton>
-        </h:form>
-        <h:form> 
-            <p:dataScroller value="#{primeBean.users}" var="users" chunkSize="10" mode="inline" scrollHeight="500">
+        <p>HEJ ADMIN </p>
+       
+<!--        <h:form> 
+            <p:dataScroller value="#{usersBean.users}" var="users" chunkSize="10" mode="inline" scrollHeight="500">
                 <f:facet name="header">
-                    Scroll Down to Load More Cars
+                    Scroll Down to Load More
                 </f:facet>
 
                 <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
@@ -41,7 +39,7 @@ and open the template in the editor.
                     </p:outputPanel>
                 </h:panelGrid>
             </p:dataScroller>
-        </h:form>
+        </h:form>-->
 
 
     </h:body>

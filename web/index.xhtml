@@ -9,25 +9,19 @@
     <h:body>
                 
                 <h:form>
-                    <h:panelGrid columns="3">
+                    <h:panelGrid columns="2">
                         <h:outputLabel value="username" for="username"></h:outputLabel>
-                        <p:inputText value="#{loginBean.username}" id="username" title="User name 8 chareters"></p:inputText>
-                        <p:tooltip for="username" showEffect="fade" hideEffect="fade" ></p:tooltip>
+                        <p:inputText value="#{loginBean.username}" id="username" ></p:inputText>
 
                         <h:outputLabel value="password" for="password"></h:outputLabel>
-                        <p:password value="#{primeBean.password}" feedback="true"></p:password>
-                        <h:panelGroup></h:panelGroup>
-                        <h:panelGroup></h:panelGroup>
+                        <p:password value="#{loginBean.password}" id="password" ></p:password>
 
                         <p:commandButton action="#{loginBean.login()}" icon="ui-icon-disk" value="Login"/>
                     </h:panelGrid>
                     
-                    <h:outputText value="#{loginBean.result}"
+                    <h:outputText value="#{loginBean.result}"></h:outputText>
                 </h:form>
                 
-        
-            
-            </p:layout>
     </h:body>
 </html>
 

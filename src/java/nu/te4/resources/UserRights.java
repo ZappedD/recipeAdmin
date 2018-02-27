@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -28,13 +29,23 @@ public class UserRights {
                     "SELECT * FROM users WHERE username=?");
             pstmt.setString(1, username);
             ResultSet result = pstmt.executeQuery();
+            System.out.println(FacesContext.getCurrentInstance().getViewRoot().getViewId());
 
             if (result.next()) {
-                outcome = BCrypt.checkpw(password, result.getString("password"));
-                if (outcome && result.getString("rights") == "admin") {
+                
+                String rights = result.getString("rights");
+                String hasedPassword = result.getString("password");
+                
+                System.out.println("Password check");
+                outcome = BCrypt.checkpw(password, hasedPassword);
+                System.out.println(outcome);
+                if (outcome && rights.equals("admin")) {
+                    System.out.println("True admin");
                     connection.close();
+                    return outcome;
                 } else {
                     //not admin or wrong password
+                    System.out.println("Not admin");
                     connection.close();
                 }
                 return outcome;
