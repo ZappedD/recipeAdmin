@@ -7,7 +7,7 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      
+
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
@@ -16,31 +16,31 @@ and open the template in the editor.
     <h:body>
 
         <p>HEJ ADMIN </p>
-       
-        <h:form> 
-            <p:dataScroller value="#{usersBean.users}" var="users" chunkSize="10" mode="inline" scrollHeight="500">
-                <f:facet name="header">
-                    Scroll Down to Load More
-                </f:facet>
 
-                <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                  
+        <h:form id="form">
+            <p:repeat value="#{usersBean.users}" var="user">
+                <h:panelGrid columns="2" style="width:100%" columnClasses="detail">
+                   
                     <p:outputPanel>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Id:" />
-                            <h:outputText value="#{users.id}" style="font-weight: bold"/>
+                            <h:outputText value="#{user.id}" style="font-weight: bold"/>
 
-                            <h:outputText value="Year:" />
-                            <h:outputText value="#{users.username}" style="font-weight: bold"/>
+                            <h:outputText value="Username:" />
+                            <h:outputText value="#{user.username}" style="font-weight: bold"/>
 
-                            <h:outputText value="Color:" />
-                            <h:outputText value="#{users.rights}" style="font-weight: bold"/>
+                            <h:outputText value="Rights:" />
+                            <h:outputText value="#{user.rights}" style="font-weight: bold"/>
+                            
+                            <p:commandButton value="Delete" id="nonAjax" actionListener="#{usersBean.removeUser(user.id)}" ajax="false" />
+
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
-            </p:dataScroller>
-        </h:form>
+                <hr />
+            </p:repeat>
 
+        </h:form>
 
     </h:body>
 </html>

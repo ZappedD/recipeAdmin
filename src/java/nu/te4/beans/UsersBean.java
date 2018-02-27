@@ -13,12 +13,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedProperty;
 import javax.inject.Named;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import nu.te4.resources.User;
+import nu.te4.resources.UserRights;
 
 /**
  *
@@ -28,6 +30,10 @@ import nu.te4.resources.User;
 @RequestScoped
 public class UsersBean{
     List<User> users = new ArrayList<>();
+    
+    public UsersBean() {
+        users = UserRights.getUsers();
+    }
 
     public List<User> getUsers() {
         return users;
@@ -36,6 +42,14 @@ public class UsersBean{
     public void setUsers(List<User> users) {
         this.users = users;
     }
+    
+    public boolean removeUser(int id ) {
+        boolean result = UserRights.removeUser(id);
+        users = UserRights.getUsers();
+        return result;
+    }
+    
+    
         
     
 }

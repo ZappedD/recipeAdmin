@@ -67,7 +67,7 @@ public class UserRights {
             PreparedStatement ptsmt = connection.prepareStatement(
                 "DELETE FROM users WHERE id = ?");
             ptsmt.setInt(1, id);
-            ptsmt.executeQuery();
+            ptsmt.executeUpdate();
             connection.close();
             return true;
         } catch (Exception e) {
