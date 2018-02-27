@@ -24,6 +24,15 @@ import nu.te4.beans.LoginBean;
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"*.xhtml"})
 public class LoginFilter {
 
+    
+    public void init(FilterConfig config) throws ServletException {
+        // Nothing to do here!
+    }
+
+    public void destroy() {
+        // Nothing to do here!
+    }
+    
      public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
          HttpServletRequest reqt = (HttpServletRequest) request;
          HttpServletResponse resp = (HttpServletResponse) response;
@@ -42,11 +51,4 @@ public class LoginFilter {
              
     }
     
-    public void init(FilterConfig config) throws ServletException {
-        // Nothing to do here!
-    }
-
-    public void destroy() {
-        // Nothing to do here!
-    }
 }

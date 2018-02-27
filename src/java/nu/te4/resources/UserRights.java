@@ -40,7 +40,6 @@ public class UserRights {
                 outcome = BCrypt.checkpw(password, hasedPassword);
                 System.out.println(outcome);
                 if (outcome && rights.equals("admin")) {
-                    System.out.println("True admin");
                     connection.close();
                     return outcome;
                 } else {

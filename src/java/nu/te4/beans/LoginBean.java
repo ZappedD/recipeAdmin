@@ -6,13 +6,11 @@
 package nu.te4.beans;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import nu.te4.resources.SessionUtils;
-import nu.te4.resources.User;
 import nu.te4.resources.UserRights;
 
 /**
@@ -24,7 +22,6 @@ import nu.te4.resources.UserRights;
 public class LoginBean implements Serializable {
     
     private String username, password, result;
-    private List<User> users;
     
     public String login() {
         boolean valid = false;

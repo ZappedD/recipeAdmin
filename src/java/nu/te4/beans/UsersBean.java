@@ -10,63 +10,32 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.ejb.Stateless;
+import java.util.ArrayList;
+import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import nu.te4.resources.User;
 
 /**
  *
  * @author Geini
  */
-@Stateless
+@Named
+@RequestScoped
 public class UsersBean{
-    
-    public JsonArray getUsers() throws SQLException{
-        try {
-            Connection connection = ConnectionFactory.getConnection();
-            PreparedStatement pstmt = connection.prepareCall(
-            "SELECT * FROM users");
-            ResultSet result = pstmt.executeQuery();
-            JsonArray jsonUsers = getUsersFromSqlData(result);
-            connection.close();
-            return jsonUsers;
-        } catch (Exception e) {
-            System.out.println("Error : " + e.getMessage());
-            return null;
-        }
+    List<User> users = new ArrayList<>();
+
+    public List<User> getUsers() {
+        return users;
     }
-    
-    private JsonArray getUsersFromSqlData(ResultSet data) throws SQLException{
-        JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
-        while (data.next()) {
-            JsonObject users = Json.createObjectBuilder()
-                    .add("userName", data.getString("username"))
-                    .add("id", data.getString("id"))
-                    .add("rights", data.getString("rights"))
-                    .build();
-            jsonArrayBuilder.add(users);
-        }
-        return jsonArrayBuilder.build();
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
-    
-    public boolean removeUser(int userId) throws SQLException{
-        try {
-            Connection connection = ConnectionFactory.getConnection();
-            PreparedStatement pstmt = connection.prepareCall(
-                    "DELETE FROM users WHERE id =?");
-            pstmt.setInt(1, userId);
-            pstmt.executeQuery();
-            connection.close();
-            return true;
-        } catch (Exception e) {
-            System.out.println("Error : " + e.getMessage());
-            return false;
-        }
-    }
-    
+        
     
 }

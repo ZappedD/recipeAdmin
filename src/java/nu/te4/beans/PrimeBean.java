@@ -6,11 +6,7 @@
 package nu.te4.beans;
 
 import java.io.Serializable;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedProperty;
@@ -48,11 +44,6 @@ public class PrimeBean implements Serializable {
      
     @PostConstruct
     public void init() {
-        try {
-            users = usersBean.getUsers();
-        } catch (Exception e) {
-            System.out.println("Error : " + e);
-        }
     }
  
     public JsonArray getCars() {
